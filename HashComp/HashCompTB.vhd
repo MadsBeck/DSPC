@@ -8,12 +8,14 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use ieee.numeric_bit_unsigned.all;
 
-package BlockDecomp is
-        type StringText is array(63 downto 0) of bit_vector(31 downto 0);
-end package;
+
 
 --! Local libraries
 library work;
+
+package BlockDecomp is
+        type StringText is array(63 downto 0) of bit_vector(31 downto 0);
+end package;
 
 --! Entity/Package Description
 entity tb_HashComp is
@@ -41,8 +43,8 @@ begin
 		input => input,
 		reset => reset,
 		clk => clk,
-		output => output
-		ready => ready
+		output => output,
+		ready => ready,
 		newData => newData);
 		
 	--! Clock generatetion
