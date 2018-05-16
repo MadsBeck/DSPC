@@ -1,12 +1,22 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+
 package HashCompPkg is
-        type StringText is array(63 downto 0) of bit_vector(31 downto 0);
-		type Constant_k is array(63 downto 0) of bit_vector(31 downto 0);
-		type InitH is array (7 downto 0) of bit_vector(31 downto 0);
+        type StringText is array(63 downto 0) of std_logic_vector(31 downto 0);
+		type Constant_k is array(63 downto 0) of std_logic_vector(31 downto 0);
+		--type InitH is array (7 downto 0) of std_logic_vector(31 downto 0);
 		
 		
-		constant Hcon : InitH := (
-		X"6a09e667", X"bb67ae85", X"3c6ef372",X"a54ff53a",
-		X"510e527f", X"9b05688c",X"1f83d9ab", X"5be0cd19");
+		constant INIT_A : std_logic_vector(31 downto 0) := x"6a09e667";
+		constant INIT_B : std_logic_vector(31 downto 0) := x"bb67ae85";
+		constant INIT_C : std_logic_vector(31 downto 0) := x"3c6ef372";
+		constant INIT_D : std_logic_vector(31 downto 0) := x"a54ff53a";
+		constant INIT_E : std_logic_vector(31 downto 0) := x"510e527f";
+		constant INIT_F : std_logic_vector(31 downto 0) := x"9b05688c";
+		constant INIT_G : std_logic_vector(31 downto 0) := x"1f83d9ab";
+		constant INIT_H : std_logic_vector(31 downto 0) := x"5be0cd19";
 								   
 		constant constants : Constant_k := (
 			x"428a2f98", x"71374491", x"b5c0fbcf", x"e9b5dba5", x"3956c25b", x"59f111f1", x"923f82a4", x"ab1c5ed5",
@@ -19,4 +29,50 @@ package HashCompPkg is
 			x"748f82ee", x"78a5636f", x"84c87814", x"8cc70208", x"90befffa", x"a4506ceb", x"bef9a3f7", x"c67178f2"
 		);
 		
+		function ep0(x : std_logic_vector) return std_logic_vector;
+		function ep1 (x : std_logic_vector) return std_logic_vector;
+		function sig0 (x : std_logic_vector) return std_logic_vector;
+		function sig1 (x : std_logic_vector) return std_logic_vector;
+		function Ch(x, y, z : std_logic_vector) return std_logic_vector;
+		function Maj(x, y, z : std_logic_vector) return std_logic_vector;
+		
+		
+		
+		
 end package;
+
+package body HashCompPkg is
+
+function ep0(x : std_logic_vector) return std_logic_vector is
+   begin
+		return std_logic_vector(rotate_right(unsigned(x), 2) xor rotate_right(unsigned(x), 13) xor rotate_right(unsigned(x), 22));
+   end ep0;
+   
+function ep1 (x : std_logic_vector) return std_logic_vector is
+   begin
+		return std_logic_vector(rotate_right(unsigned(x), 6) xor rotate_right(unsigned(x), 11) xor rotate_right(unsigned(x), 25));
+   end ep1;
+
+function sig0 (x : std_logic_vector) return std_logic_vector is
+   begin
+		return std_logic_vector(rotate_right(unsigned(x), 7) xor rotate_right(unsigned(x), 18) xor shift_right(unsigned(x), 3));
+   end sig0;
+   
+function sig1 (x : std_logic_vector) return std_logic_vector is
+   begin
+		return std_logic_vector(rotate_right(unsigned(x), 17) xor rotate_right(unsigned(x), 19) xor shift_right(unsigned(x), 10));
+   end sig1;   
+
+function Ch(x, y, z : std_logic_vector) return std_logic_vector is
+	begin
+		return (x and y) xor ((not x) and z);
+	end function ch;
+
+function Maj(x, y, z : std_logic_vector) return std_logic_vector is
+	begin
+		return (x and y) xor (x and z) xor (y and z);
+	end function maj; 
+
+
+
+end HashCompPkg;

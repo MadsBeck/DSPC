@@ -6,16 +6,10 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use ieee.numeric_bit_unsigned.all;
+use ieee.std_logic_unsigned.all;
 
+use work.HashCompPkg.all;
 
-
---! Local libraries
-library work;
-
-package BlockDecomp is
-        type StringText is array(63 downto 0) of bit_vector(31 downto 0);
-end package;
 
 --! Entity/Package Description
 entity tb_HashComp is
@@ -23,22 +17,32 @@ end entity tb_HashComp;
 
 architecture tb of tb_HashComp is
 
-Component Hash_Comp
-port(
-	input : IN StringText;
-	newData : IN std_logic;
-	clk : IN std_logic;
-	reset : IN std_logic;
-	output : OUT bit_vector(255 downto 0);
-	ready : out std_logic);
-end Component;
 -- Signal declarations
+
+--Input signals
+	signal reset : std_logic := '0';
+	signal newData : std_logic := '0';
+	signal clk : std_logic := '0';
+	signal input : StringText := (others => (others => '0'));
+
+--OutPut signal
+	signal ready : std_logic := '0';
+	signal output : std_logic_vector(255 downto 0);
+	
+	
+	constant clkPeriod : time := 10 ns;
+
+
+
+
+
 
 --! Component declaration for 
 
 begin
 
-	dut: Hash_Comp PORT MAP(
+	dut: entity work.HashComp 
+	PORT MAP(
 	
 		input => input,
 		reset => reset,
@@ -146,7 +150,7 @@ begin
 	
 	assert output = X"135c6560432275a70eed672fa5d480818a62b4c2e57bde90437ce069a92c2d7f" report "Failed to calculate hash for TeamGoFlex" severity error;
 		
-	
+	assert false report "Simulation Finished" severity failure;
       
 
    end process;

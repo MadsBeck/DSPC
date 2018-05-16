@@ -1,6 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use ieee.std_logic_unsigned.all;
 
 use work.HashCompPkg.all;
 
@@ -13,7 +14,7 @@ entity HashComp is
 		newData : in  std_logic; -- Start processing the next 
 		
 		input : IN StringText;
-		output : OUT bit_vector(255 downto 0)
+		output : OUT std_logic_vector(255 downto 0)
 
 	);
 end entity HashComp;
@@ -22,12 +23,12 @@ end entity HashComp;
 architecture rtl of HashComp is
 
 	
-	signal h0, h1, h2, h3, h4, h5, h6, h7 : bit_vector(31 downto 0);
+	signal h0, h1, h2, h3, h4, h5, h6, h7 : std_logic_vector(31 downto 0);
 	
-	signal T1, T2, a, b, c, d, e, f, g, h : bit_vector(31 downto 0);
+	signal a, b, c, d, e, f, g, h : std_logic_vector(31 downto 0);
 
 
-	Type state_type is (IDLE,BUSY,DONE);
+	Type state_type is (IDLE,BUSY,FINAL);
 		signal state : state_type;
 	
 
@@ -42,20 +43,31 @@ begin
    --! HashComp process
    ---------------------------------------------------------------------------------------------------
    hashCompProc : process(reset, clk)
+   
+   variable Counter : std_logic_vector(5 downto 0) := (others => '0');
+   variable K : std_logic_vector(31 downto 0) := (others => '0');
+   variable inputTemp : std_logic_vector(31 downto 0) := (others => '0');
+   
+   variable T1 : std_logic_vector(31 downto 0) := (others => '0'); 
+   variable T2 : std_logic_vector(31 downto 0) := (others => '0'); 
+   
+   
+   
    begin
       if (reset = '1') then
-		a <= InitH(0);
-		b <= InitH(1);
-		c <= InitH(2);
-		d <= InitH(3);
-		e <= InitH(4);
-		f <= InitH(5);
-		g <= InitH(6);
-		h <= InitH(7);
-		T1 <= (others => '0');
-		T2 <= (others => '0');
+		a <= INIT_A;
+		b <= INIT_B;
+		c <= INIT_C;
+		d <= INIT_D;
+		e <= INIT_E;
+		f <= INIT_F;
+		g <= INIT_G;
+		h <= INIT_H;
+		T1:= (others => '0');
+		T2 := (others => '0');
 		
 		state <= IDLE;
+		
 		
 
       elsif (clk'event and clk = '1') then
@@ -67,32 +79,45 @@ begin
 				
 			end if;
 		when BUSY =>
-			for I 0 to 63 loop
-			T1 <= h + ep1(e) + Ch(e,f,g) + Constant_k(I) + InitH(I);
-			T2 <= ep0(a) + Maj(a,b,c);
+		
+		
+			K := (constants(to_integer(unsigned(Counter))));
+			inputTemp := (input(to_integer(unsigned(Counter))));
+			
+			T1 :=  std_logic_vector(unsigned(h) + unsigned(ep1(e)) + unsigned(Ch(e,f,g)) + unsigned(K) + unsigned(inputTemp));
+			T2 := std_logic_vector(unsigned(ep0(a)) + unsigned(Maj(a,b,c)));
 			h <= g;
 			g <= f;
 			f <= e;
-			e <= (d + T1);
+			e <= std_logic_vector(unsigned(d) + unsigned(T1));
 			d <= c;
 			c <= b;
 			b <= a;
-			a <= (T1 + T2);			
+			a <= std_logic_vector(unsigned(T1) + unsigned(T2));	
 			
-			end loop;
+		if(Counter = b"111111" ) then
+		Counter := std_logic_vector(unsigned(Counter) + 1);	
+		else
+		state <= FINAL;
+		
+		
+		end if;
 			
-			state <= FINAL;
+		
 			
-		when FINAL =>
 			
-			h0 <= h0 + a;
-			h1 <= h1 + b;			
-			h2 <= h2 + c;				
-			h3 <= h3 + d;
-			h4 <= h4 + e;
-			h5 <= h5 + f;
-			h6 <= h6 + g;
-			h7 <= h7 + h;
+		when FINAL => --TODO Make so that input can be longer than 512;
+			h0 <= std_logic_vector(unsigned(a) + unsigned(INIT_A));
+			h1 <= std_logic_vector(unsigned(b) + unsigned(INIT_B));
+			h2 <= std_logic_vector(unsigned(c) + unsigned(INIT_C));
+			h3 <= std_logic_vector(unsigned(d) + unsigned(INIT_D));
+			h4 <= std_logic_vector(unsigned(e) + unsigned(INIT_E));
+			h5 <= std_logic_vector(unsigned(f) + unsigned(INIT_F));
+			h6 <= std_logic_vector(unsigned(g) + unsigned(INIT_G));
+			h7 <= std_logic_vector(unsigned(h) + unsigned(INIT_H));
+			
+			state <= IDLE;
+		end case;
 				
 	  
 	  
@@ -103,33 +128,4 @@ begin
 end architecture rtl;
 
 
-
-function ep0(x : bit_vector) return bit_vector is
-   begin
-		return bit_vector(rotate_right(unsigned(x), 2) xor rotate_right(unsigned(x), 13) xor rotate_right(unsigned(x), 22));
-   end ep0;
-   
-function ep1 (x : bit_vector) return bit_vector is
-   begin
-		return bit_vector(rotate_right(unsigned(x), 6) xor rotate_right(unsigned(x), 11) xor rotate_right(unsigned(x), 25));
-   end ep1;
-
-function sig0 (x : bit_vector) return bit_vector is
-   begin
-		return bit_vector((rotate_right(unsigned(x), 7) xor rotate_right(unsigned(x), 18) xor shift_right(unsigned(x), 3));
-   end sig0;
-   
-function sig1 (x : bit_vector) return bit_vector is
-   begin
-		return bit_vector(rotate_right(unsigned(x), 17) xor rotate_right(unsigned(x), 19) xor shift_right(unsigned(x), 10));
-   end sig1;   
-
-function Ch(x, y, z : bit_vector) return bit_vector is
-	begin
-		return (x and y) xor ((not x) and z);
-	end function ch;
-
-function Maj(x, y, z : bit_vector) return bit_vector is
-	begin
-		return (x and y) xor (x and z) xor (y and z);
-	end function maj;   
+  
