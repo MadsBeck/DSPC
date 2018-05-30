@@ -5,8 +5,8 @@ use ieee.numeric_std.all;
 
 package HashCompPkg is
         type StringText is array(63 downto 0) of std_logic_vector(31 downto 0);
-		type Constant_k is array(63 downto 0) of std_logic_vector(31 downto 0);
-		--type InitH is array (7 downto 0) of std_logic_vector(31 downto 0);
+		type Constant_k is array(0 to 63) of std_logic_vector(31 downto 0);
+		
 		
 		
 		constant INIT_A : std_logic_vector(31 downto 0) := x"6a09e667";
