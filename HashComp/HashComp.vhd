@@ -95,7 +95,7 @@ begin
 			b <= a;
 			a <= std_logic_vector(unsigned(T1) + unsigned(T2));	
 			
-		if(Counter = b"111111" ) then
+		if(Counter /= b"111111" ) then
 		Counter := std_logic_vector(unsigned(Counter) + 1);	
 		else
 		state <= FINAL;
