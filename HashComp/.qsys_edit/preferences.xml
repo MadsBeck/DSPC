@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="143" />
+   <irq preferredWidth="34" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Library/University Program/Audio &amp; Video,Library/DSP,Library/Basic Functions/Bridges and Adaptors/Memory Mapped,Library,Library/Basic Functions/Bridges and Adaptors,Library/Qsys Interconnect,Library/Interface Protocols/Serial,Library/Qsys Interconnect/Memory-Mapped,Project,Library/University Program/Communications,Library/Interface Protocols/PCI Express,Library/Basic Functions,Library/University Program/Audio &amp; Video/Video,Library/DSP/Error Detection and Correction,Library/University Program,Library/Interface Protocols,Library/DSP/Video and Image Processing,Library/Interface Protocols/PCI Express/QSYS Example Designs" />
+ <window width="1936" height="1056" x="-8" y="-8" />
+ <generation synthesis="VHDL" path="BSF" />
+</preferences>
