@@ -1,0 +1,36 @@
+C:/Users/martin/Documents/DSPC/BlockDecomp/tb_deComp.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/martin/Documents/DSPC/BlockDecomp/tb_deComp.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Loading package shaFunctions
+-- Compiling entity tb_deComp
+-- Compiling architecture Bhv of tb_deComp
+-- Loading entity deComp
+
+} {} {}} C:/Users/martin/Documents/DSPC/BlockDecomp/shaFunctions.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/martin/Documents/DSPC/BlockDecomp/shaFunctions.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package shaFunctions
+-- Compiling package body shaFunctions
+-- Loading package shaFunctions
+
+} {} {}} C:/Users/martin/Documents/DSPC/BlockDecomp/deComp.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\martin\Documents\DSPC\BlockDecomp\deComp.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Loading package shaFunctions
+-- Compiling entity deComp
+-- Compiling architecture bhv of deComp
+
+} {} {}}
