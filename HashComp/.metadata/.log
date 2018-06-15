@@ -1,0 +1,13 @@
+!SESSION 2018-06-14 11:26:59.356 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=da_DK
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-06-14 11:29:29.719
+!MESSAGE Indexed 'Rs232Comm_bsp' (79 sources, 90 headers) in 3,17 sec: 2.591 declarations; 4.639 references; 88 unresolved inclusions; 6 syntax errors; 173 unresolved names (2,3 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-06-14 11:29:31.596
+!MESSAGE Indexed 'Rs232Comm' (1 sources, 0 headers) in 0,005 sec: 1 declarations; 1 references; 1 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
