@@ -1,0 +1,9 @@
+11:22:27 **** Incremental Build of configuration Nios II for project UartsTest ****
+make all 
+Info: Building ../UartsTest_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../UartsTest_bsp/
+[BSP build complete]
+[UartsTest build complete]
+
+11:22:29 Build Finished (took 1s.331ms)
+
