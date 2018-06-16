@@ -94,7 +94,7 @@ package body sha256Functions is
 		begin		
 			return_vector(((to_integer(unsigned(y))*8)-1) downto 0) := x(((to_integer(unsigned(y))*8)-1) downto 0);
 			return_vector((to_integer(unsigned(y))*8)+7) := '1';
-			return_vector(510 downto 447) := y;
+			return_vector(511 downto 448) := std_logic_vector(shift_left(unsigned(y),3));
 			return return_vector;
 	end padInput;
 	
