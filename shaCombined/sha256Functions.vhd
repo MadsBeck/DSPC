@@ -35,6 +35,7 @@ package sha256Functions is
 	function sig1 (x : std_logic_vector) return std_logic_vector;
 	function Ch(x, y, z : std_logic_vector) return std_logic_vector;
 	function Maj(x, y, z : std_logic_vector) return std_logic_vector;
+	function reverse(x : std_logic_vector) return std_logic_vector;
 	function padInput (x, y : std_logic_vector) return std_logic_vector;
 	
 	
@@ -87,6 +88,16 @@ package body sha256Functions is
 		return (x and y) xor (x and z) xor (y and z);
 	end function maj;
 	
+	function reverse(x : std_logic_vector) return std_logic_vector is
+		variable returnVector: std_logic_vector(x'Range);
+	
+		begin
+			for i in x'Range loop
+				returnVector(x'length-1-i) := x(i);
+			end loop;
+			return returnVector;
+		end;
+	
 	function padInput(x, y: std_logic_vector) return std_logic_vector is
 		
 		variable return_vector: std_logic_vector(511 downto 0) := (others => '0');
@@ -94,7 +105,7 @@ package body sha256Functions is
 		begin		
 			return_vector(((to_integer(unsigned(y))*8)-1) downto 0) := x(((to_integer(unsigned(y))*8)-1) downto 0);
 			return_vector((to_integer(unsigned(y))*8)+7) := '1';
-			return_vector(448 to 511) := y(y'Range);
+			return_vector(511 downto 448) := std_logic_vector(shift_left(unsigned(reverse(y)),3));
 			return return_vector;
 	end padInput;
 	

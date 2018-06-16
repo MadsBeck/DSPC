@@ -7,7 +7,7 @@ use work.sha256Functions.all;
 entity sha256 is
 	port (
 		inData 		: in std_logic_vector(511 downto 0);
-		len 		: in std_logic_vector(0 to 63);
+		len 		: in std_logic_vector(63 downto 0);
 		clock 		: in std_logic;
 		reset 		: in std_logic;
 		update 		: in std_logic;
@@ -17,11 +17,11 @@ end sha256;
 
 architecture bhv of sha256 is
 
-signal padOut 		: std_logic_vector(511 downto 0);
-signal readyD 		: std_logic;
-signal readyH 		: std_logic;
-signal updateD 		: std_logic;
-signal finishedD 	: std_logic;
+signal padOut 		: std_logic_vector(511 downto 0) := (others => '0');
+signal readyD 		: std_logic := '0';
+signal readyH 		: std_logic := '0';
+signal updateD 		: std_logic := '0';
+signal finishedD 	: std_logic := '0';
 signal deCompOut 	: blockArray;
 
 begin

@@ -9,27 +9,27 @@ z2
 cModel Technology
 dC:/Users/martin/Documents/DSPC/BlockDecomp
 Edecomp
-Z0 w1529136003
+Z0 w1529153021
 Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
-Z2 DPx4 work 15 sha256functions 0 22 ::KSAdJUYXz[PM^cOzSK?1
+Z2 DPx4 work 15 sha256functions 0 22 BI83aGD_l1Hd?hK8FbOJC3
 Z3 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z4 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z6 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-Z7 dC:/VHDL/DSPC/DSPC/shaCombined
-Z8 8C:\VHDL\DSPC\DSPC\shaCombined\deComp.vhd
-Z9 FC:\VHDL\DSPC\DSPC\shaCombined\deComp.vhd
+Z7 dC:/Users/martin/Documents/DSPC/shaCombined
+Z8 8C:/Users/martin/Documents/DSPC/shaCombined/deComp.vhd
+Z9 FC:/Users/martin/Documents/DSPC/shaCombined/deComp.vhd
 l0
 L7
 VShToaJHX[>C?gIV:N_baL2
 !s100 BSKI3Ch8>BiH3WAedQCII2
 Z10 OV;C;10.5b;63
 32
-Z11 !s110 1529145917
+Z11 !s110 1529191107
 !i10b 1
-Z12 !s108 1529145917.000000
-Z13 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\VHDL\DSPC\DSPC\shaCombined\deComp.vhd|
-Z14 !s107 C:\VHDL\DSPC\DSPC\shaCombined\deComp.vhd|
+Z12 !s108 1529191107.000000
+Z13 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/martin/Documents/DSPC/shaCombined/deComp.vhd|
+Z14 !s107 C:/Users/martin/Documents/DSPC/shaCombined/deComp.vhd|
 !i113 1
 Z15 o-work work -2002 -explicit
 Z16 tExplicit 1 CvgOpt 0
@@ -56,7 +56,7 @@ R14
 R15
 R16
 Ehashcomp
-Z18 w1529136318
+R0
 R2
 R3
 R4
@@ -64,19 +64,19 @@ R1
 R5
 R6
 R7
-Z19 8C:/VHDL/DSPC/DSPC/shaCombined/HashComp.vhd
-Z20 FC:/VHDL/DSPC/DSPC/shaCombined/HashComp.vhd
+Z18 8C:/Users/martin/Documents/DSPC/shaCombined/HashComp.vhd
+Z19 FC:/Users/martin/Documents/DSPC/shaCombined/HashComp.vhd
 l0
 L8
 VNmhS8dkPgPDlF7cOJHfGB3
 !s100 ]j?k3]RZ2oOEJRCbJ72FA1
 R10
 32
-R11
+Z20 !s110 1529191108
 !i10b 1
-R12
-Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/VHDL/DSPC/DSPC/shaCombined/HashComp.vhd|
-Z22 !s107 C:/VHDL/DSPC/DSPC/shaCombined/HashComp.vhd|
+Z21 !s108 1529191108.000000
+Z22 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/martin/Documents/DSPC/shaCombined/HashComp.vhd|
+Z23 !s107 C:/Users/martin/Documents/DSPC/shaCombined/HashComp.vhd|
 !i113 1
 R15
 R16
@@ -87,48 +87,48 @@ R4
 R1
 R5
 R6
-Z23 DEx4 work 8 hashcomp 0 22 NmhS8dkPgPDlF7cOJHfGB3
+Z24 DEx4 work 8 hashcomp 0 22 NmhS8dkPgPDlF7cOJHfGB3
 l35
 L23
 VC;4d7fZ45UDeYZfS0k=1Z0
 !s100 _d]9<^CVjZ6_AC0mf6CLI3
 R10
 32
-R11
+R20
 !i10b 1
-R12
 R21
 R22
+R23
 !i113 1
 R15
 R16
 Emmsha
-Z24 w1529141890
+Z25 w1529189257
 R1
 R3
 R4
 R5
 R6
 R7
-Z25 8C:\VHDL\DSPC\DSPC\shaCombined\mmSha.vhd
-Z26 FC:\VHDL\DSPC\DSPC\shaCombined\mmSha.vhd
+Z26 8C:/Users/martin/Documents/DSPC/shaCombined/mmSha.vhd
+Z27 FC:/Users/martin/Documents/DSPC/shaCombined/mmSha.vhd
 l0
 L9
 VY;]TmWH9H``K=]YHdnd=D2
 !s100 ?:;<G:[C>DX:`?9PC4nmE3
 R10
 32
-Z27 !s110 1529145918
+R20
 !i10b 1
-Z28 !s108 1529145918.000000
-Z29 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\VHDL\DSPC\DSPC\shaCombined\mmSha.vhd|
-Z30 !s107 C:\VHDL\DSPC\DSPC\shaCombined\mmSha.vhd|
+R21
+Z28 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/martin/Documents/DSPC/shaCombined/mmSha.vhd|
+Z29 !s107 C:/Users/martin/Documents/DSPC/shaCombined/mmSha.vhd|
 !i113 1
 R15
 R16
 Abhv
 R2
-Z31 DEx4 work 6 sha256 0 22 4AML1[a<O`dY^V`O;h[dW3
+Z30 DEx4 work 6 sha256 0 22 4AML1[a<O`dY^V`O;h[dW3
 R1
 R3
 R4
@@ -141,33 +141,33 @@ VUQeNYV1m`^Vmh<oeDzXQn3
 !s100 UNf^aI_>T?SVJ:0AaGZPE1
 R10
 32
-R27
+R20
 !i10b 1
+R21
 R28
 R29
-R30
 !i113 1
 R15
 R16
 Epadding
-Z32 w1529045647
+Z31 w1529045647
 R1
 R5
 R6
-Z33 dC:/Users/martin/Documents/DSPC/shaCombined
-Z34 8C:/Users/martin/Documents/DSPC/shaCombined/padding.vhd
-Z35 FC:/Users/martin/Documents/DSPC/shaCombined/padding.vhd
+R7
+Z32 8C:/Users/martin/Documents/DSPC/shaCombined/padding.vhd
+Z33 FC:/Users/martin/Documents/DSPC/shaCombined/padding.vhd
 l0
 L6
 VoeQY>CO<h^K<fFoRhfjl40
 !s100 02[01K>]TozgVKh`YBPW81
 R10
 32
-Z36 !s110 1529068653
+Z34 !s110 1529068653
 !i10b 1
-Z37 !s108 1529068653.000000
-Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/martin/Documents/DSPC/shaCombined/padding.vhd|
-Z39 !s107 C:/Users/martin/Documents/DSPC/shaCombined/padding.vhd|
+Z35 !s108 1529068653.000000
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/martin/Documents/DSPC/shaCombined/padding.vhd|
+Z37 !s107 C:/Users/martin/Documents/DSPC/shaCombined/padding.vhd|
 !i113 1
 R15
 R16
@@ -182,16 +182,16 @@ VTjjJ^?b[19T66SE8`Kzzg1
 !s100 8aEP75cflM]4BFeGNS9:V0
 R10
 32
-R36
+R34
 !i10b 1
+R35
+R36
 R37
-R38
-R39
 !i113 1
 R15
 R16
 Esha256
-Z40 w1529141535
+Z38 w1529187892
 R1
 R2
 R3
@@ -199,24 +199,24 @@ R4
 R5
 R6
 R7
-Z41 8C:/VHDL/DSPC/DSPC/shaCombined/sha256.vhd
-Z42 FC:/VHDL/DSPC/DSPC/shaCombined/sha256.vhd
+Z39 8C:/Users/martin/Documents/DSPC/shaCombined/sha256.vhd
+Z40 FC:/Users/martin/Documents/DSPC/shaCombined/sha256.vhd
 l0
 L7
 V4AML1[a<O`dY^V`O;h[dW3
 !s100 ;6C;X@2NeFYQH82417HLc2
 R10
 32
-R27
+R20
 !i10b 1
-R28
-Z43 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/VHDL/DSPC/DSPC/shaCombined/sha256.vhd|
-Z44 !s107 C:/VHDL/DSPC/DSPC/shaCombined/sha256.vhd|
+R21
+Z41 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/martin/Documents/DSPC/shaCombined/sha256.vhd|
+Z42 !s107 C:/Users/martin/Documents/DSPC/shaCombined/sha256.vhd|
 !i113 1
 R15
 R16
 Abhv
-R23
+R24
 R17
 R1
 R2
@@ -224,18 +224,18 @@ R3
 R4
 R5
 R6
-R31
+R30
 l27
 L18
-V;VdniOSJUdT:V`Yj`MW9T1
-!s100 NLA4zC`e^H@DFGg?3=lJ03
+VDGf7TJ7@Sm1^BLEjVSXK90
+!s100 QJ_dhkBP67MGEMKQm28E90
 R10
 32
-R27
+R20
 !i10b 1
-R28
-R43
-R44
+R21
+R41
+R42
 !i113 1
 R15
 R16
@@ -245,9 +245,9 @@ R3
 R4
 R5
 R6
-R33
-8C:/Users/martin/Documents/DSPC/shaCombined/mmSha.vhd
-FC:/Users/martin/Documents/DSPC/shaCombined/mmSha.vhd
+R7
+R26
+R27
 l0
 L7
 V>lGieigkHR51DcQJ<RAbP1
@@ -257,8 +257,8 @@ R10
 !s110 1529069849
 !i10b 1
 !s108 1529069849.000000
-!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/martin/Documents/DSPC/shaCombined/mmSha.vhd|
-!s107 C:/Users/martin/Documents/DSPC/shaCombined/mmSha.vhd|
+R28
+R29
 !i113 1
 R15
 R16
@@ -266,22 +266,22 @@ Psha256functions
 R1
 R5
 R6
-Z45 w1529145912
+Z43 w1529191105
 R7
-Z46 8C:/VHDL/DSPC/DSPC/shaCombined/sha256Functions.vhd
-Z47 FC:/VHDL/DSPC/DSPC/shaCombined/sha256Functions.vhd
+Z44 8C:/Users/martin/Documents/DSPC/shaCombined/sha256Functions.vhd
+Z45 FC:/Users/martin/Documents/DSPC/shaCombined/sha256Functions.vhd
 l0
 L6
-V::KSAdJUYXz[PM^cOzSK?1
-!s100 C9zA=gS[D:>IK41<;2Se_0
+VBI83aGD_l1Hd?hK8FbOJC3
+!s100 :9HZ1L<YCnDnzA=OQ@`Il3
 R10
 32
 b1
 R11
 !i10b 1
 R12
-Z48 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/VHDL/DSPC/DSPC/shaCombined/sha256Functions.vhd|
-Z49 !s107 C:/VHDL/DSPC/DSPC/shaCombined/sha256Functions.vhd|
+Z46 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/martin/Documents/DSPC/shaCombined/sha256Functions.vhd|
+Z47 !s107 C:/Users/martin/Documents/DSPC/shaCombined/sha256Functions.vhd|
 !i113 1
 R15
 R16
@@ -291,40 +291,40 @@ R1
 R5
 R6
 l0
-L45
-VZGn8akXFSE79`fTL1O7Sd1
-!s100 EiHiLSU?zn0_zdU1d0TOO0
+L46
+VIH5E=?cX4UAg17LX^TR_W3
+!s100 njfn1f6UjOUOEk>33217@3
 R10
 32
 R11
 !i10b 1
 R12
-R48
-R49
+R46
+R47
 !i113 1
 R15
 R16
 Esha_tb
-Z50 w1529138461
+R0
 R3
 R4
 R1
 R5
 R6
 R7
-Z51 8C:\VHDL\DSPC\DSPC\shaCombined\sha_tb.vhd
-Z52 FC:\VHDL\DSPC\DSPC\shaCombined\sha_tb.vhd
+Z48 8C:/Users/martin/Documents/DSPC/shaCombined/sha_tb.vhd
+Z49 FC:/Users/martin/Documents/DSPC/shaCombined/sha_tb.vhd
 l0
 L13
 VbU_e]@C^gfHoSa1`5gLf]1
 !s100 dX@@G6bh4JU;EDznioFI00
 R10
 32
-R27
+R20
 !i10b 1
-R28
-Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\VHDL\DSPC\DSPC\shaCombined\sha_tb.vhd|
-Z54 !s107 C:\VHDL\DSPC\DSPC\shaCombined\sha_tb.vhd|
+R21
+Z50 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/martin/Documents/DSPC/shaCombined/sha_tb.vhd|
+Z51 !s107 C:/Users/martin/Documents/DSPC/shaCombined/sha_tb.vhd|
 !i113 1
 R15
 R16
@@ -334,18 +334,18 @@ R4
 R1
 R5
 R6
-Z55 DEx4 work 6 sha_tb 0 22 bU_e]@C^gfHoSa1`5gLf]1
+Z52 DEx4 work 6 sha_tb 0 22 bU_e]@C^gfHoSa1`5gLf]1
 l54
 L16
-Z56 VAAi17b2[eb53h[j`L_gmS0
-Z57 !s100 b7J5z]eYM=7;Zc?Wlb@g@2
+Z53 VAAi17b2[eb53h[j`L_gmS0
+Z54 !s100 b7J5z]eYM=7;Zc?Wlb@g@2
 R10
 32
-R27
+R20
 !i10b 1
-R28
-R53
-R54
+R21
+R50
+R51
 !i113 1
 R15
 R16
@@ -353,10 +353,10 @@ Psim_avalon
 R1
 R5
 R6
-Z58 w1521621816
-R33
-Z59 8C:/Users/martin/Documents/DSPC/shaCombined/sim_avalon.vhd
-Z60 FC:/Users/martin/Documents/DSPC/shaCombined/sim_avalon.vhd
+Z55 w1521621816
+R7
+Z56 8C:/Users/martin/Documents/DSPC/shaCombined/sim_avalon.vhd
+Z57 FC:/Users/martin/Documents/DSPC/shaCombined/sim_avalon.vhd
 l0
 L5
 VkD]99gPVhf9DfoWU;J<6Y3
@@ -364,11 +364,11 @@ VkD]99gPVhf9DfoWU;J<6Y3
 R10
 32
 b1
-Z61 !s110 1529073601
+Z58 !s110 1529073601
 !i10b 1
-Z62 !s108 1529073601.000000
-Z63 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/martin/Documents/DSPC/shaCombined/sim_avalon.vhd|
-Z64 !s107 C:/Users/martin/Documents/DSPC/shaCombined/sim_avalon.vhd|
+Z59 !s108 1529073601.000000
+Z60 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/martin/Documents/DSPC/shaCombined/sim_avalon.vhd|
+Z61 !s107 C:/Users/martin/Documents/DSPC/shaCombined/sim_avalon.vhd|
 !i113 1
 R15
 R16
@@ -383,11 +383,11 @@ Vd3VGQ0:B02WYS<@[5@2TQ1
 !s100 =YHgoYPnmF9C4P5DlDX;G0
 R10
 32
-R61
+R58
 !i10b 1
-R62
-R63
-R64
+R59
+R60
+R61
 !i113 1
 R15
 R16
