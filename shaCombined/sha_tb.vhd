@@ -76,20 +76,22 @@ begin
 		wait for clkPeriod;
 		
 		avs_s1_address <= "0000";
-		avs_s1_writedata <= X"AAAAAAAA";
+		avs_s1_writedata <= X"6D616554";
 		avs_s1_write <= '1';
 		
 		wait for clkPeriod;
 		
 		avs_s1_address <= "0001";
-		avs_s1_writedata <= X"00BBBBBB";
+		avs_s1_writedata <= X"78656C46";
 		
-		wait for clkPeriod;
+		wait for clkPeriod;	
 		
 		avs_s1_write <= '0';
-		
-		
-		
+
+
+
+		wait for clkPeriod*20;
+		avs_s1_read <= '1';
 
 	-- insert signal assignments here
 	wait;

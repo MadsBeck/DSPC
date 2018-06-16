@@ -5,6 +5,7 @@ use ieee.numeric_std.all;
 
 
 
+
 entity mmSha is
 	port (
 		mm_clock 			: in std_logic;
@@ -22,7 +23,7 @@ architecture bhv of mmSha is
 
 	signal dataIn 		: std_logic_vector(511 downto 0);
 	signal dataOut  	: std_logic_vector(255 downto 0);
-	signal len			: std_logic_vector(8 downto 0);
+	signal len			: std_logic_vector(63 downto 0) := (others => '0');
 	signal updateFlag	: std_logic;
 	signal finish 		: std_logic;
 	signal done			: std_logic;
@@ -85,24 +86,24 @@ SHA256 : entity work.sha256
 					dataIn(479 downto 448) <= mm_writedata(31 downto 0);
 				when "1111" =>
 					dataIn(511 downto 480) <= mm_writedata(31 downto 0);
-					len <= std_logic_vector(to_unsigned(counter,9));
-					updateFlag <= '1';
+					len(8 downto 0) <= std_logic_vector(to_unsigned(counter,9));
 				when others =>
 
 				end case;
 				counter := counter + 1;
 				elsif(done = '1' and mm_write = '0') then
 					if (dataIn(counter*32-25 downto counter*32-32) = X"00") then
-						len <= std_logic_vector(to_unsigned(counter*4-4,9));
+						len(8 downto 0) <= std_logic_vector(to_unsigned(counter*4-4,9));
 					elsif (dataIn(counter*32-17 downto counter*32-24) = X"00") then
-						len <= std_logic_vector(to_unsigned(counter*4-3,9));
+						len(8 downto 0) <= std_logic_vector(to_unsigned(counter*4-3,9));
 					elsif (dataIn(counter*32-9 downto counter*32-16) = X"00") then
-						len <= std_logic_vector(to_unsigned(counter*4-2,9));
+						len(8 downto 0) <= std_logic_vector(to_unsigned(counter*4-2,9));
 					elsif (dataIn(counter*32-1 downto counter*32-8) = X"00") then
-						len <= std_logic_vector(to_unsigned(counter*4-1,9));
+						len(8 downto 0) <= std_logic_vector(to_unsigned(counter*4-1,9));
 					else
-						len <= std_logic_vector(to_unsigned(counter*4,9));
+						len(8 downto 0) <= std_logic_vector(to_unsigned(counter*4,9));
 					end if;
+					updateFlag <= '1';
 				elsif(mm_read = '1') then
 					mm_readdata <= dataOut(counterO+1*32-1 downto counterO*32);
 					counterO := counterO + 1;

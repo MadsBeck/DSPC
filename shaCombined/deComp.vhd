@@ -27,7 +27,7 @@ begin -- blcok deComp
 	variable counter : integer range 16 to 65;
 	begin
 	
-		if reset = '1' then
+		if reset = '0' then
 			counter := 16;
 			state <= IDLE;
 		elsif (rising_edge(clock)) then

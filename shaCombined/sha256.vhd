@@ -7,7 +7,7 @@ use work.sha256Functions.all;
 entity sha256 is
 	port (
 		inData 		: in std_logic_vector(511 downto 0);
-		len 		: in std_logic_vector(8 downto 0);
+		len 		: in std_logic_vector(63 downto 0);
 		clock 		: in std_logic;
 		reset 		: in std_logic;
 		update 		: in std_logic;
@@ -46,7 +46,12 @@ HASH : entity work.HashComp
 	output => outData);
 
 	sha256 : process(reset,clock)
-	begin
+	begin --TODO STATE MACHINE!
+	
+	if (updateD = '1') then 
+	updateD <= '0';
+	end if;
+	
 		if(reset = '0') then
 			outData <= (others => '0');
 			finished <= '0';

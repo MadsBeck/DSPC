@@ -88,16 +88,14 @@ package body sha256Functions is
 	end function maj;
 	
 	function padInput(x, y: std_logic_vector) return std_logic_vector is
-	
-		variable k				:integer := (448-to_integer(unsigned(y))-1);		-- Calculation of amount of zeroes needed for the message to append
-		variable paddingLength		:integer := to_integer(unsigned(y)) + k + 1 + 64;	-- Size of padded message as used by length of Message
-		variable Message 			:std_logic_vector(paddingLength-1 downto 0) :=(others => '0'); -- Size of message is paddingLength
-	
-		begin
-			Message ((paddingLength - 1) downto (paddingLength - to_integer(unsigned(y)))) := x(to_integer((unsigned(y)) - 1) downto 0);
-			Message (paddingLength - to_integer(unsigned(y)) - 1) := '1';
-			Message (63 downto 0) := y;
-			return Message;
+		
+		variable return_vector: std_logic_vector(511 downto 0) := (others => '0');
+		
+		begin		
+			return_vector(((to_integer(unsigned(y))*8)-1) downto 0) := x(((to_integer(unsigned(y))*8)-1) downto 0);
+			return_vector((to_integer(unsigned(y))*8)+7) := '1';
+			return_vector(510 downto 447) := y;
+			return return_vector;
 	end padInput;
 	
 end package body sha256Functions;
