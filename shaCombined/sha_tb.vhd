@@ -67,22 +67,28 @@ begin
 		
 	Clk <= not Clk after clkPeriod;
 	csi_clockreset_clk <= Clk;
-	csi_clockreset_reset_n <= '0', '1' after clkPeriod/2;
+	
 
 	WaveGen_Proc: process
+	
+	variable data : std_logic_vector(0 to 255) := (others => '0');
+	
 	begin
+	
+		csi_clockreset_reset_n <= '0', '1' after clkPeriod/2;
   
 		avs_s1_chipselect <= '1';
+		avs_s1_write <= '1';
 		wait for clkPeriod;
 		
 		avs_s1_address <= "0000";
-		avs_s1_writedata <= X"6D616554";
-		avs_s1_write <= '1';
+		avs_s1_writedata <= X"5465616D";
 		
-		wait for clkPeriod;
+		
+		wait for clkPeriod*4;
 		
 		avs_s1_address <= "0001";
-		avs_s1_writedata <= X"78656C46";
+		avs_s1_writedata <= X"466C6578";
 		
 		wait for clkPeriod;	
 		
@@ -90,8 +96,51 @@ begin
 
 
 
-		wait for clkPeriod*20;
+		wait for clkPeriod*210;
 		avs_s1_read <= '1';
+		wait for clkPeriod*3;
+		for i in 0 to 7 loop
+			data(i*32 to ((i+1)*32)-1) := avs_s1_readdata;
+			wait for clkPeriod*2;
+		end loop;
+		
+		avs_s1_read <= '0';
+
+		wait for clkPeriod*2;
+		
+		assert (data = X"07B7348BB4B48AB449449078384FB6ECE73ADE1C475D77164F45CC973B9C9549") report "Sha256 failed with:";
+
+		wait for clkPeriod*2;
+
+		avs_s1_chipselect <= '1';
+		avs_s1_write <= '1';
+		wait for clkPeriod;
+		
+		avs_s1_address <= "0000";
+		avs_s1_writedata <= X"5465616D";
+		
+		
+		wait for clkPeriod*3;
+		
+		avs_s1_address <= "0001";
+		avs_s1_writedata <= X"466C6500";
+		
+		wait for clkPeriod;	
+		
+		avs_s1_write <= '0';
+
+		wait for clkPeriod*210;
+		avs_s1_read <= '1';
+		wait for clkPeriod*3;
+		for i in 0 to 7 loop
+			data(i*32 to ((i+1)*32)-1) := avs_s1_readdata;
+			wait for clkPeriod*2;
+		end loop;
+		
+		assert (data = X"0713FAB016E9BDE8E00139E35B9C0F3C17C6E44A0C2EF2657BE36768EE98B439") report "Sha256 2 failed with:";
+		
+
+		
 
 	-- insert signal assignments here
 	wait;

@@ -4,17 +4,17 @@ use ieee.numeric_std.all;
 
 
 package sha256Functions is
-	type blockArray is array (63 downto 0) of std_logic_vector(31 downto 0);
-	type Constant_k is array(0 to 63) of std_logic_vector(31 downto 0);
+	type blockArray is array (0 to 63) of std_logic_vector(0 to 31);
+	type Constant_k is array(0 to 63) of std_logic_vector(0 to 31);
 	
-	constant INIT_A : std_logic_vector(31 downto 0) := x"6a09e667";
-	constant INIT_B : std_logic_vector(31 downto 0) := x"bb67ae85";
-	constant INIT_C : std_logic_vector(31 downto 0) := x"3c6ef372";
-	constant INIT_D : std_logic_vector(31 downto 0) := x"a54ff53a";
-	constant INIT_E : std_logic_vector(31 downto 0) := x"510e527f";
-	constant INIT_F : std_logic_vector(31 downto 0) := x"9b05688c";
-	constant INIT_G : std_logic_vector(31 downto 0) := x"1f83d9ab";
-	constant INIT_H : std_logic_vector(31 downto 0) := x"5be0cd19";
+	constant INIT_A : std_logic_vector(0 to 31) := x"6a09e667";
+	constant INIT_B : std_logic_vector(0 to 31) := x"bb67ae85";
+	constant INIT_C : std_logic_vector(0 to 31) := x"3c6ef372";
+	constant INIT_D : std_logic_vector(0 to 31) := x"a54ff53a";
+	constant INIT_E : std_logic_vector(0 to 31) := x"510e527f";
+	constant INIT_F : std_logic_vector(0 to 31) := x"9b05688c";
+	constant INIT_G : std_logic_vector(0 to 31) := x"1f83d9ab";
+	constant INIT_H : std_logic_vector(0 to 31) := x"5be0cd19";
 							   
 	constant constants : Constant_k := (
 		x"428a2f98", x"71374491", x"b5c0fbcf", x"e9b5dba5", x"3956c25b", x"59f111f1", x"923f82a4", x"ab1c5ed5",
@@ -100,12 +100,12 @@ package body sha256Functions is
 	
 	function padInput(x, y: std_logic_vector) return std_logic_vector is
 		
-		variable return_vector: std_logic_vector(511 downto 0) := (others => '0');
+		variable return_vector: std_logic_vector(0 to 511) := (others => '0');
 		
 		begin		
-			return_vector(((to_integer(unsigned(y))*8)-1) downto 0) := x(((to_integer(unsigned(y))*8)-1) downto 0);
-			return_vector((to_integer(unsigned(y))*8)+7) := '1';
-			return_vector(511 downto 448) := std_logic_vector(shift_left(unsigned(reverse(y)),3));
+			return_vector(0 to ((to_integer(unsigned(y))*8)-1)) := x(0 to ((to_integer(unsigned(y))*8)-1));
+			return_vector((to_integer(unsigned(y))*8)) := '1';
+			return_vector(511-y'length+1 to return_vector'length-1) := std_logic_vector(shift_left(unsigned(y),3));
 			return return_vector;
 	end padInput;
 	
