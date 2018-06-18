@@ -78,33 +78,65 @@ begin
 		csi_clockreset_reset_n <= '0', '1' after clkPeriod/2;
   
 		avs_s1_chipselect <= '1';
-		avs_s1_write <= '1';
-		wait for clkPeriod;
-		
 		avs_s1_address <= "0000";
 		avs_s1_writedata <= X"5465616D";
+		wait for clkPeriod;
 		
+		avs_s1_write <= '1';
 		
 		wait for clkPeriod*2;
-		
-		avs_s1_address <= "0001";
-		avs_s1_writedata <= X"466C6578";
-		
-		wait for clkPeriod;	
 		
 		avs_s1_write <= '0';
-
-
-
-		wait for clkPeriod*210;
-		avs_s1_read <= '1';
+		avs_s1_chipselect <= '0';
+		
+		wait for clkPeriod;
+		
+		avs_s1_chipselect <= '1';
+		avs_s1_address <= "0001";
+		avs_s1_writedata <= X"466C6578";
+		wait for clkPeriod;	
+		
+		avs_s1_write <= '1';
+		
 		wait for clkPeriod*2;
+		
+		avs_s1_write <= '0';
+		avs_s1_chipselect <= '0';
+		
+		wait for clkPeriod;
+		
+		avs_s1_chipselect <= '1';
+		avs_s1_address <= "1111";
+		avs_s1_writedata <= X"00000000";
+		wait for clkPeriod;	
+		
+		avs_s1_write <= '1';
+		
+		wait for clkPeriod;
+		
+		avs_s1_write <= '0';
+		avs_s1_chipselect <= '0';
+		
+		
+		
+
+
+		wait for clkPeriod*106;
+		
+		wait for clkPeriod;
+		
 		for i in 0 to 7 loop
+			avs_s1_address <= std_logic_vector(to_unsigned(i,avs_s1_address'length));
+			avs_s1_chipselect <= '1';
+			wait for clkPeriod;
+			avs_s1_read <= '1';
+			wait for clkPeriod*3;
 			data(i*32 to ((i+1)*32)-1) := avs_s1_readdata;
+			avs_s1_read <= '0';
+			avs_s1_chipselect <= '0';
 			wait for clkPeriod;
 		end loop;
 		
-		avs_s1_read <= '0';
 
 		wait for clkPeriod;
 		
