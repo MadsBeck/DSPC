@@ -65,7 +65,7 @@ begin
 		mm_writedata	=> avs_s1_writedata,
 		mm_readdata 	=> avs_s1_readdata);
 		
-	Clk <= not Clk after clkPeriod;
+	Clk <= not Clk after clkPeriod/2;
 	csi_clockreset_clk <= Clk;
 	
 
@@ -85,7 +85,7 @@ begin
 		avs_s1_writedata <= X"5465616D";
 		
 		
-		wait for clkPeriod*4;
+		wait for clkPeriod*2;
 		
 		avs_s1_address <= "0001";
 		avs_s1_writedata <= X"466C6578";
@@ -98,19 +98,19 @@ begin
 
 		wait for clkPeriod*210;
 		avs_s1_read <= '1';
-		wait for clkPeriod*3;
+		wait for clkPeriod*2;
 		for i in 0 to 7 loop
 			data(i*32 to ((i+1)*32)-1) := avs_s1_readdata;
-			wait for clkPeriod*2;
+			wait for clkPeriod;
 		end loop;
 		
 		avs_s1_read <= '0';
 
-		wait for clkPeriod*2;
+		wait for clkPeriod;
 		
 		assert (data = X"07B7348BB4B48AB449449078384FB6ECE73ADE1C475D77164F45CC973B9C9549") report "Sha256 failed with:";
 
-		wait for clkPeriod*2;
+		wait for clkPeriod;
 
 		avs_s1_chipselect <= '1';
 		avs_s1_write <= '1';
@@ -120,7 +120,7 @@ begin
 		avs_s1_writedata <= X"5465616D";
 		
 		
-		wait for clkPeriod*3;
+		wait for clkPeriod*2;
 		
 		avs_s1_address <= "0001";
 		avs_s1_writedata <= X"466C6500";
@@ -131,11 +131,13 @@ begin
 
 		wait for clkPeriod*210;
 		avs_s1_read <= '1';
-		wait for clkPeriod*3;
+		wait for clkPeriod*2;
 		for i in 0 to 7 loop
 			data(i*32 to ((i+1)*32)-1) := avs_s1_readdata;
-			wait for clkPeriod*2;
+			wait for clkPeriod;
 		end loop;
+		
+		avs_s1_read <= '0';
 		
 		assert (data = X"0713FAB016E9BDE8E00139E35B9C0F3C17C6E44A0C2EF2657BE36768EE98B439") report "Sha256 2 failed with:";
 		

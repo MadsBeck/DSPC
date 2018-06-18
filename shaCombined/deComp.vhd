@@ -11,6 +11,7 @@ entity deComp is
 		reset : in std_logic;
 		ready : out std_logic;
 		update : in std_logic;
+		workingD : out std_logic;
 		finished : out std_logic;
 		outData : out blockArray);
 end deComp;
@@ -22,6 +23,7 @@ architecture bhv of deComp is
 	signal tempBlock : blockArray;
 begin -- blcok deComp
 	ready <= '1' when state = IDLE else '0';
+	workingD <= '1' when state = WORKING else '0';
 
 	decomp: process(clock,reset)
 	variable counter : integer range 16 to 65;
@@ -32,7 +34,6 @@ begin -- blcok deComp
 			counter := 16;
 			state <= IDLE;
 			finished <= '0';
-			ready <= '1';
 			check := '0';
 		elsif (rising_edge(clock)) then
 			case state is

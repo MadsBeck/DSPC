@@ -11,6 +11,7 @@ entity HashComp is
 		reset  : in std_logic;
 
 		ready  : out std_logic; -- Ready to process the next block
+		workingH : out std_logic;
 		newData : in  std_logic; -- Start processing the next 
 		
 		input : IN blockArray;
@@ -37,6 +38,7 @@ begin
 
 	
 	ready <= '1' when state = IDLE else '0';
+	workingH <= '1' when state = BUSY else '0';
 	
 	
 	   ---------------------------------------------------------------------------------------------------
@@ -88,6 +90,7 @@ begin
 			h <= INIT_H;
 			T1:= (others => '0');
 			T2 := (others => '0');
+			counter := "000000";
 			if (newData = '1') then
 				
 				state <= BUSY;

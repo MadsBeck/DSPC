@@ -12,7 +12,9 @@ entity sha256 is
 		reset 		: in std_logic;
 		update 		: in std_logic;
 		finished 	: out std_logic;
+		workingS	: out std_logic;
 		ready 		: out std_logic;
+		readS		: in std_logic;
 		outData 	: out std_logic_vector(0 to 255));
 end sha256;
 
@@ -23,6 +25,8 @@ signal readyD 		: std_logic := '0';
 signal readyH 		: std_logic := '0';
 signal updateD 		: std_logic := '0';
 signal finishedD 	: std_logic := '0';
+signal workingD 	: std_logic := '0';
+signal workingH 	: std_logic := '0';
 signal hOut		: std_logic_vector(0 to 255) := (others => '0');
 signal deCompOut 	: blockArray;
 type state_type is (IDLE, WORKING, DONE);
@@ -31,12 +35,14 @@ signal state 		: state_type;
 begin
 
 	ready <= '1' when state = IDLE else '0';
+	workingS <= '0' when state = IDLE else '1';
 
 DECOMP : entity work.deComp
 	port map(
 	inData => padOut,
 	clock => clock,
 	reset => reset,
+	workingD => workingD,
 	ready => readyD,
 	update => updateD,
 	finished => finishedD,
@@ -47,6 +53,7 @@ HASH : entity work.HashComp
 	clk => clock,
 	reset => reset,
 	ready => readyH,
+	workingH => workingH,
 	newData => finishedD,
 	hOut => hOut,
 	input => deCompOut);
@@ -67,21 +74,21 @@ HASH : entity work.HashComp
 			if(update = '1' and readyD = '1' and readyH = '1') then
 				finished <= '0';
 				state <= WORKING;
-			end if;
-		when WORKING =>
-			if(readyD = '1') then
 				padOut <= padInput(inData,len);
 				updateD <= '1';
 			end if;
-			if(finishedD = '1') then
+			if readS = '1' then
+				finished <= '0';
+			end if;
+		when WORKING =>
+			if(workingD = '1') then
 				updateD <= '0';
 			end if;
-			if (readyH = '1' and finishedD = '1') then
-				if(check = '1') then
+			if (workingH = '1') then
+				check := '1';
+			end if;
+			if(workingH = '0' and check = '1' and readyH = '1') then
 					state <= DONE;
-				else
-					check := '1';
-				end if;
 			end if;
 		when DONE =>
 			outData <= hOut;
