@@ -79,31 +79,98 @@
  */
 
 #include "sys/alt_stdio.h"
+#include<system.h>
+#include<io.h>
+#include <alt_types.h>
+#include <priv/alt_iic_isr_register.h>
+
+alt_u8 flag = 0;
 
 int main()
 { 
-
-	char * input;
-	int count = 0;
+	char * input="";
+	char count = 0;
 	char cn='0';
-
-  alt_putstr("Welcome to \"butlicker\", Type string:\n");
-
-
-  while((cn = alt_getchar() )!= '\n')
-  {
-	  (*(input+count)) = cn;
-	  count++;
-  }
-  alt_putstr(input);
+	alt_u32 data[16] = {};
+	int context;
 
 
 
+for(;;)
+{
+
+	alt_putstr("Welcome to \"butlicker2\", Type string:\n");
 
 
-  alt_putstr("\nHitting while 1 loop\n");
-  /* Event loop never exits. */
-  while (1);
+	  while((cn = alt_getchar() )!= '\n')
+	  {
+		  (*(input+count)) = cn;
+		  count++;
+	  }
+	  alt_printf("size= %x \n",count);
+	  alt_printf("mod4= %x \n",(count%4));
+	  alt_printf("dataContaniers= %x \n",(count/4));
+
+	  if((count%4) == 0)
+	  {
+	  for(int i = 0; i<(count/4);i++)
+	  {
+		  data[i] = (*(input+(i*4)))<<24;
+		  data[i] |= (*(input+(i*4)+1))<<16;
+		  data[i] |= (*(input+(i*4)+2))<<8;
+		  data[i] |= (*(input+(i*4)+3));
+	  }
+
+	  }else
+	  {
+		  alt_u8 mod4 = (count%4);
+		  alt_u8 j = 0;
+
+		  for(j = 0; j<(count/4);j++)
+		  {
+			  data[j] = (*(input+(j*4)))<<24;
+			  data[j] |= (*(input+(j*4)+1))<<16;
+			  data[j] |= (*(input+(j*4)+2))<<8;
+			  data[j] |= (*(input+(j*4)+3));
+		  }
+
+		  switch(mod4){
+		  case 1:
+			  data[j] = (*(input+(j*4)))<<24;
+			  break;
+		  case 2:
+			  data[j] = (*(input+(j*4)))<<24;
+			  data[j] |= (*(input+(j*4)+1))<<16;
+			  break;
+		  case 3:
+			  data[j] = (*(input+(j*4)))<<24;
+			  data[j] |= (*(input+(j*4)+1))<<16;
+			  data[j] |= (*(input+(j*4)+2))<<8;
+			  break;
+
+		  }
+
+
+	  }
+
+	  IOWR_32DIRECT(SHA256_MM_0_BASE, 0,0x00000000);
+
+	  while(flag == 0);
+
+	  alt_putstr("ready To recive data");
+
+
+	  for(int i = 0; i<16;i++)
+	  {
+			  //alt_printf("%x\n",data[i]);
+		  	  IOWR_32DIRECT(SHA256_MM_0_BASE, i, data[i]);
+			  data[i]= 0;
+	  }
+	  count = 0;
+	  *input = "";
+
+
+}
 
   return 0;
 }

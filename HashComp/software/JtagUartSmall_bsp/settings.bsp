@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>15-06-2018 13:49:54</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1529063394402</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>18-06-2018 10:55:05</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1529312106070</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\VHDL\DSPC\DSPC\HashComp\software\JtagUartSmall_bsp</BspGeneratedLocation>
-        <BspSettingsFile>.\settings.bsp</BspSettingsFile>
+        <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\System.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_gen2_0</Cpu>
@@ -905,8 +905,14 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>Sha256_mm_0</slaveDescriptor>
+                <addressRange>0x00011040 - 0x0001107F</addressRange>
+                <addressSpan>64</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x00011008 - 0x0001100F</addressRange>
+                <addressRange>0x00011088 - 0x0001108F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

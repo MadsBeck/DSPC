@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 
 
 entity TopTest is
-	port(	CLOCK_50 : IN std_logic	
+	port(	CLOCK_50 : IN std_logic
 	);
 --			csi_clockreset_clk 		: in std_logic; --Avalon Clk
 --			csi_clockreset_reset_n 	: in std_logic; --Avalon Reset
@@ -27,6 +27,7 @@ ARCHITECTURE Structure OF TopTest IS
 	component System is
 		port (
 			clk_clk                        : in  std_logic := 'X' -- clk
+			
 		);
 	end component System;
 	

@@ -1,0 +1,18 @@
+10:22:07 **** Incremental Build of configuration Nios II for project FinalProject ****
+make all 
+Info: Building ../FinalProject_bsp/
+C:/intelFPGA/17.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../FinalProject_bsp/
+[BSP build complete]
+Info: Compiling hello_world_small.c to obj/default/hello_world_small.o
+nios2-elf-gcc -xc -MP -MMD -c -I../FinalProject_bsp//HAL/inc -I../FinalProject_bsp/ -I../FinalProject_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world_small.o hello_world_small.c
+Info: Linking FinalProject.elf
+nios2-elf-g++  -T'../FinalProject_bsp//linker.x' -msys-crt0='../FinalProject_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../FinalProject_bsp/  -msmallc  -Wl,-Map=FinalProject.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o FinalProject.elf obj/default/hello_world_small.o -lm -msys-lib=m
+nios2-elf-insert FinalProject.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name System --quartus_project_dir "C:/VHDL/DSPC/DSPC/HashComp" --jdi ../..//output_files/HashComp.jdi --sopcinfo C:/VHDL/DSPC/DSPC/HashComp/software/FinalProject_bsp/../../System.sopcinfo
+Info: (FinalProject.elf) 4008 Bytes program size (code + initialized data).
+Info:                    27 KBytes free for stack + heap.
+Info: Creating FinalProject.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source FinalProject.elf >FinalProject.objdump
+[FinalProject build complete]
+
+10:22:09 Build Finished (took 1s.877ms)
+

@@ -1,11 +1,17 @@
 Archive member included to satisfy reference by file (symbol)
 
+c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+                              obj/default/hello_world_small.o (memset)
 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
                               obj/default/hello_world_small.o (alt_getchar)
 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
                               ../JtagUartSmall_bsp//obj/HAL/src/crt0.o (alt_load)
 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
                               ../JtagUartSmall_bsp//obj/HAL/src/crt0.o (alt_main)
+../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+                              obj/default/hello_world_small.o (alt_printf)
+../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
+                              ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o) (alt_putchar)
 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
                               obj/default/hello_world_small.o (alt_putstr)
 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
@@ -13,7 +19,7 @@ Archive member included to satisfy reference by file (symbol)
 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
                               ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o) (altera_avalon_jtag_uart_read)
 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
-                              ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o) (altera_avalon_jtag_uart_write)
+                              ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o) (altera_avalon_jtag_uart_write)
 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
                               ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o) (alt_dcache_flush_all)
 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
@@ -82,7 +88,7 @@ LOAD c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
                 0x0000000000008020                PROVIDE (__ram_exceptions_end, ABSOLUTE (.))
                 0x0000000000008020                PROVIDE (__flash_exceptions_start, LOADADDR (.exceptions))
 
-.text           0x0000000000008020      0x308
+.text           0x0000000000008020      0x750
                 [!provide]                        PROVIDE (stext, ABSOLUTE (.))
  *(.interp)
  *(.hash)
@@ -130,40 +136,47 @@ LOAD c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
  .text          0x0000000000008020       0x3c ../JtagUartSmall_bsp//obj/HAL/src/crt0.o
                 0x0000000000008020                _start
  .text          0x000000000000805c        0x0 obj/default/hello_world_small.o
- .text.startup  0x000000000000805c       0x5c obj/default/hello_world_small.o
+ .text.startup  0x000000000000805c      0x2cc obj/default/hello_world_small.o
                 0x000000000000805c                main
- .text          0x00000000000080b8       0x44 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
-                0x00000000000080b8                alt_getchar
- .text          0x00000000000080fc       0xe0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
-                0x00000000000080fc                alt_load
- .text          0x00000000000081dc       0x2c ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
-                0x00000000000081dc                alt_main
- .text          0x0000000000008208       0x38 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
-                0x0000000000008208                alt_putstr
- .text          0x0000000000008240       0x24 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
-                0x0000000000008240                alt_irq_init
-                0x0000000000008260                alt_sys_init
- .text          0x0000000000008264       0x5c ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
-                0x0000000000008264                altera_avalon_jtag_uart_read
- .text          0x00000000000082c0       0x34 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
-                0x00000000000082c0                altera_avalon_jtag_uart_write
- .text          0x00000000000082f4        0x4 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
-                0x00000000000082f4                alt_dcache_flush_all
- .text          0x00000000000082f8        0x8 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
- .text          0x0000000000008300        0x4 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
-                0x0000000000008300                alt_icache_flush_all
- .text          0x0000000000008304        0x8 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
-                0x0000000000008304                altera_nios2_gen2_irq_init
- .text          0x000000000000830c        0x0 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
- .text.strlen   0x000000000000830c       0x1c c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
-                0x000000000000830c                strlen
+ .text          0x0000000000008328        0x0 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+ .text.memset   0x0000000000008328       0x20 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+                0x0000000000008328                memset
+ .text          0x0000000000008348       0x44 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
+                0x0000000000008348                alt_getchar
+ .text          0x000000000000838c       0xe0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
+                0x000000000000838c                alt_load
+ .text          0x000000000000846c       0x2c ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
+                0x000000000000846c                alt_main
+ .text          0x0000000000008498      0x170 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+                0x0000000000008498                alt_printf
+ .text          0x0000000000008608       0x48 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
+                0x0000000000008608                alt_putchar
+ .text          0x0000000000008650       0x38 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
+                0x0000000000008650                alt_putstr
+ .text          0x0000000000008688       0x24 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x0000000000008688                alt_irq_init
+                0x00000000000086a8                alt_sys_init
+ .text          0x00000000000086ac       0x5c ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                0x00000000000086ac                altera_avalon_jtag_uart_read
+ .text          0x0000000000008708       0x34 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x0000000000008708                altera_avalon_jtag_uart_write
+ .text          0x000000000000873c        0x4 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                0x000000000000873c                alt_dcache_flush_all
+ .text          0x0000000000008740        0x8 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+ .text          0x0000000000008748        0x4 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                0x0000000000008748                alt_icache_flush_all
+ .text          0x000000000000874c        0x8 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                0x000000000000874c                altera_nios2_gen2_irq_init
+ .text          0x0000000000008754        0x0 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .text.strlen   0x0000000000008754       0x1c c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+                0x0000000000008754                strlen
  *(.gnu.warning.*)
  *(.fini)
                 [!provide]                        PROVIDE (__etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (_etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (etext, ABSOLUTE (.))
  *(.eh_frame_hdr)
-                0x0000000000008328                . = ALIGN (0x4)
+                0x0000000000008770                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__preinit_array_start, ABSOLUTE (.))
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end, ABSOLUTE (.))
@@ -185,106 +198,116 @@ LOAD c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
  *(SORT(.dtors.*))
                 [!provide]                        PROVIDE (__DTOR_END__, ABSOLUTE (.))
  *(.jcr)
-                0x0000000000008328                . = ALIGN (0x4)
+                0x0000000000008770                . = ALIGN (0x4)
 
-.rodata         0x0000000000008328       0x4c
-                0x0000000000008328                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
-                0x0000000000008328                . = ALIGN (0x4)
+.rodata         0x0000000000008770       0x7c
+                0x0000000000008770                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
+                0x0000000000008770                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x0000000000008328       0x3f obj/default/hello_world_small.o
- *fill*         0x0000000000008367        0x1 
+                0x0000000000008770       0x6d obj/default/hello_world_small.o
+                                         0x71 (size before relaxing)
+ *fill*         0x00000000000087dd        0x3 
  .rodata.str1.4
-                0x0000000000008368        0xc ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+                0x00000000000087e0        0xc ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
                                           0xa (size before relaxing)
  *(.rodata1)
-                0x0000000000008374                . = ALIGN (0x4)
-                0x0000000000008374                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
-                0x0000000000008328                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
+                0x00000000000087ec                . = ALIGN (0x4)
+                0x00000000000087ec                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x0000000000008770                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
 
-.rwdata         0x0000000000008374       0x70 load address 0x00000000000083e4
-                0x0000000000008374                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
-                0x0000000000008374                . = ALIGN (0x4)
+.rwdata         0x00000000000087ec       0x70 load address 0x000000000000885c
+                0x00000000000087ec                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x00000000000087ec                . = ALIGN (0x4)
  *(.got.plt)
  *(.got)
  *(.data1)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x0000000000008374        0x0 ../JtagUartSmall_bsp//obj/HAL/src/crt0.o
- .data          0x0000000000008374        0x0 obj/default/hello_world_small.o
- .data          0x0000000000008374        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
- .data          0x0000000000008374        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
- .data          0x0000000000008374        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
- .data          0x0000000000008374        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
- .data          0x0000000000008374        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
- .data          0x0000000000008374        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .data          0x0000000000008374        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .data          0x0000000000008374        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .data          0x0000000000008374       0x58 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
-                0x0000000000008374                alt_fd_list
-                0x00000000000083a4                alt_dev_null
- .data          0x00000000000083cc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .data          0x00000000000083cc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .data          0x00000000000083cc        0x0 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
-                0x00000000000103cc                _gp = ABSOLUTE ((. + 0x8000))
+ .data          0x00000000000087ec        0x0 ../JtagUartSmall_bsp//obj/HAL/src/crt0.o
+ .data          0x00000000000087ec        0x0 obj/default/hello_world_small.o
+ .data          0x00000000000087ec        0x0 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+ .data          0x00000000000087ec        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
+ .data          0x00000000000087ec        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
+ .data          0x00000000000087ec        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
+ .data          0x00000000000087ec        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+ .data          0x00000000000087ec        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
+ .data          0x00000000000087ec        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
+ .data          0x00000000000087ec        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .data          0x00000000000087ec        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .data          0x00000000000087ec        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x00000000000087ec        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x00000000000087ec       0x58 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+                0x00000000000087ec                alt_fd_list
+                0x000000000000881c                alt_dev_null
+ .data          0x0000000000008844        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x0000000000008844        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .data          0x0000000000008844        0x0 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+                0x0000000000010844                _gp = ABSOLUTE ((. + 0x8000))
                 [!provide]                        PROVIDE (gp, _gp)
  *(.rwdata .rwdata.*)
  *(.sdata .sdata.* .gnu.linkonce.s.*)
- .sdata         0x00000000000083cc        0x4 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
-                0x00000000000083cc                jtag_uart_0
- .sdata         0x00000000000083d0       0x14 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
-                0x00000000000083d0                alt_max_fd
-                0x00000000000083d4                alt_dev_list
-                0x00000000000083dc                alt_fs_list
+ .sdata         0x0000000000008844        0x4 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x0000000000008844                jtag_uart_0
+ .sdata         0x0000000000008848       0x14 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+                0x0000000000008848                alt_max_fd
+                0x000000000000884c                alt_dev_list
+                0x0000000000008854                alt_fs_list
  *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
-                0x00000000000083e4                . = ALIGN (0x4)
-                0x00000000000083e4                _edata = ABSOLUTE (.)
+                0x000000000000885c                . = ALIGN (0x4)
+                0x000000000000885c                _edata = ABSOLUTE (.)
                 [!provide]                        PROVIDE (edata, ABSOLUTE (.))
-                0x00000000000083e4                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
-                0x00000000000083e4                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
+                0x000000000000885c                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
+                0x000000000000885c                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
 
-.bss            0x0000000000008454        0xc
-                0x0000000000008454                __bss_start = ABSOLUTE (.)
+.bss            0x00000000000088cc       0x10
+                0x00000000000088cc                __bss_start = ABSOLUTE (.)
                 [!provide]                        PROVIDE (__sbss_start, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_start, ABSOLUTE (.))
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
- .sbss          0x0000000000008454        0xc ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
-                0x0000000000008454                alt_envp
-                0x0000000000008458                alt_argv
-                0x000000000000845c                alt_argc
+ .sbss          0x00000000000088cc        0x1 obj/default/hello_world_small.o
+                0x00000000000088cc                flag
+ *fill*         0x00000000000088cd        0x3 
+ .sbss          0x00000000000088d0        0xc ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
+                0x00000000000088d0                alt_envp
+                0x00000000000088d4                alt_argv
+                0x00000000000088d8                alt_argc
  *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
  *(.scommon)
                 [!provide]                        PROVIDE (__sbss_end, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_end, ABSOLUTE (.))
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp//obj/HAL/src/crt0.o
- .bss           0x0000000000008460        0x0 obj/default/hello_world_small.o
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .bss           0x0000000000008460        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .bss           0x0000000000008460        0x0 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp//obj/HAL/src/crt0.o
+ .bss           0x00000000000088dc        0x0 obj/default/hello_world_small.o
+ .bss           0x00000000000088dc        0x0 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x00000000000088dc        0x0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .bss           0x00000000000088dc        0x0 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
  *(COMMON)
-                0x0000000000008460                . = ALIGN (0x4)
-                0x0000000000008460                __bss_end = ABSOLUTE (.)
+                0x00000000000088dc                . = ALIGN (0x4)
+                0x00000000000088dc                __bss_end = ABSOLUTE (.)
 
 .onchip_memory2_0
-                0x0000000000008460        0x0
+                0x00000000000088dc        0x0
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_start, ABSOLUTE (.))
  *(.onchip_memory2_0 .onchip_memory2_0. onchip_memory2_0.*)
-                0x0000000000008460                . = ALIGN (0x4)
+                0x00000000000088dc                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_end, ABSOLUTE (.))
-                0x0000000000008460                _end = ABSOLUTE (.)
-                0x0000000000008460                end = ABSOLUTE (.)
-                0x0000000000008460                __alt_stack_base = ABSOLUTE (.)
+                0x00000000000088dc                _end = ABSOLUTE (.)
+                0x00000000000088dc                end = ABSOLUTE (.)
+                0x00000000000088dc                __alt_stack_base = ABSOLUTE (.)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_load_addr, LOADADDR (.onchip_memory2_0))
 
 .stab
@@ -309,9 +332,12 @@ LOAD c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
  *(.comment)
  .comment       0x0000000000000000       0x23 obj/default/hello_world_small.o
                                          0x24 (size before relaxing)
+ .comment       0x0000000000000023       0x24 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
  .comment       0x0000000000000023       0x24 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
  .comment       0x0000000000000023       0x24 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
  .comment       0x0000000000000023       0x24 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
+ .comment       0x0000000000000023       0x24 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+ .comment       0x0000000000000023       0x24 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
  .comment       0x0000000000000023       0x24 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
  .comment       0x0000000000000023       0x24 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
  .comment       0x0000000000000023       0x24 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
@@ -334,144 +360,171 @@ LOAD c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000      0x1c8
+.debug_aranges  0x0000000000000000      0x228
  *(.debug_aranges)
  .debug_aranges
                 0x0000000000000000       0x28 ../JtagUartSmall_bsp//obj/HAL/src/crt0.o
  .debug_aranges
                 0x0000000000000028       0x20 obj/default/hello_world_small.o
  .debug_aranges
-                0x0000000000000048       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
+                0x0000000000000048       0x20 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
  .debug_aranges
-                0x0000000000000068       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
+                0x0000000000000068       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
  .debug_aranges
-                0x0000000000000088       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
+                0x0000000000000088       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
  .debug_aranges
-                0x00000000000000a8       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
+                0x00000000000000a8       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
  .debug_aranges
-                0x00000000000000c8       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x00000000000000c8       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
  .debug_aranges
-                0x00000000000000e8       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                0x00000000000000e8       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
  .debug_aranges
-                0x0000000000000108       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x0000000000000108       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
  .debug_aranges
-                0x0000000000000128       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                0x0000000000000128       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
  .debug_aranges
-                0x0000000000000148       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+                0x0000000000000148       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
  .debug_aranges
-                0x0000000000000168       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                0x0000000000000168       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
  .debug_aranges
-                0x0000000000000188       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                0x0000000000000188       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
  .debug_aranges
-                0x00000000000001a8       0x20 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+                0x00000000000001a8       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_aranges
+                0x00000000000001c8       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_aranges
+                0x00000000000001e8       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_aranges
+                0x0000000000000208       0x20 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x14c3
+.debug_info     0x0000000000000000     0x1980
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000       0x6a ../JtagUartSmall_bsp//obj/HAL/src/crt0.o
- .debug_info    0x000000000000006a       0xd8 obj/default/hello_world_small.o
- .debug_info    0x0000000000000142      0x32d ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
- .debug_info    0x000000000000046f      0x1c9 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
- .debug_info    0x0000000000000638      0x169 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
- .debug_info    0x00000000000007a1      0x13a ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
- .debug_info    0x00000000000008db      0x185 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_info    0x0000000000000a60      0x1b4 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_info    0x0000000000000c14      0x197 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_info    0x0000000000000dab       0x92 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_info    0x0000000000000e3d      0x499 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_info    0x00000000000012d6       0x92 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_info    0x0000000000001368       0x92 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_info    0x00000000000013fa       0xc9 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_info    0x000000000000006a      0x242 obj/default/hello_world_small.o
+ .debug_info    0x00000000000002ac       0xdc c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+ .debug_info    0x0000000000000388      0x32d ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
+ .debug_info    0x00000000000006b5      0x1c9 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_info    0x000000000000087e      0x169 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_info    0x00000000000009e7      0x14d ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_info    0x0000000000000b34      0x12a ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_info    0x0000000000000c5e      0x13a ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_info    0x0000000000000d98      0x185 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x0000000000000f1d      0x1b4 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_info    0x00000000000010d1      0x197 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_info    0x0000000000001268       0x92 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_info    0x00000000000012fa      0x499 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_info    0x0000000000001793       0x92 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_info    0x0000000000001825       0x92 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_info    0x00000000000018b7       0xc9 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
 
-.debug_abbrev   0x0000000000000000      0x97f
+.debug_abbrev   0x0000000000000000      0xc14
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000       0x12 ../JtagUartSmall_bsp//obj/HAL/src/crt0.o
- .debug_abbrev  0x0000000000000012       0xbb obj/default/hello_world_small.o
- .debug_abbrev  0x00000000000000cd      0x11d ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
- .debug_abbrev  0x00000000000001ea       0xd8 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
- .debug_abbrev  0x00000000000002c2       0xee ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
- .debug_abbrev  0x00000000000003b0       0xd3 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
- .debug_abbrev  0x0000000000000483      0x107 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_abbrev  0x000000000000058a      0x102 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_abbrev  0x000000000000068c       0xd5 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_abbrev  0x0000000000000761       0x42 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_abbrev  0x00000000000007a3       0xd9 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_abbrev  0x000000000000087c       0x42 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_abbrev  0x00000000000008be       0x42 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_abbrev  0x0000000000000900       0x7f c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_abbrev  0x0000000000000012      0x11b obj/default/hello_world_small.o
+ .debug_abbrev  0x000000000000012d       0x8e c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+ .debug_abbrev  0x00000000000001bb      0x11d ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
+ .debug_abbrev  0x00000000000002d8       0xd8 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_abbrev  0x00000000000003b0       0xee ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_abbrev  0x000000000000049e       0xd5 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_abbrev  0x0000000000000573       0xd2 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_abbrev  0x0000000000000645       0xd3 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_abbrev  0x0000000000000718      0x107 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_abbrev  0x000000000000081f      0x102 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_abbrev  0x0000000000000921       0xd5 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_abbrev  0x00000000000009f6       0x42 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_abbrev  0x0000000000000a38       0xd9 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_abbrev  0x0000000000000b11       0x42 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_abbrev  0x0000000000000b53       0x42 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_abbrev  0x0000000000000b95       0x7f c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
 
-.debug_line     0x0000000000000000      0x9c1
+.debug_line     0x0000000000000000      0xd49
  *(.debug_line)
  .debug_line    0x0000000000000000       0x66 ../JtagUartSmall_bsp//obj/HAL/src/crt0.o
- .debug_line    0x0000000000000066       0x83 obj/default/hello_world_small.o
- .debug_line    0x00000000000000e9       0xb7 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
- .debug_line    0x00000000000001a0       0xa4 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
- .debug_line    0x0000000000000244       0xbd ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
- .debug_line    0x0000000000000301       0x9b ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
- .debug_line    0x000000000000039c      0x101 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_line    0x000000000000049d       0xfb ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_line    0x0000000000000598       0xf0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_line    0x0000000000000688       0x4e ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_line    0x00000000000006d6       0xf1 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_line    0x00000000000007c7       0x4e ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_line    0x0000000000000815       0x50 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_line    0x0000000000000865      0x15c c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_line    0x0000000000000066      0x14c obj/default/hello_world_small.o
+ .debug_line    0x00000000000001b2      0x15d c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+ .debug_line    0x000000000000030f       0xb7 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
+ .debug_line    0x00000000000003c6       0xa4 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_line    0x000000000000046a       0xbd ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_line    0x0000000000000527      0x10d ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_line    0x0000000000000634       0x55 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_line    0x0000000000000689       0x9b ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_line    0x0000000000000724      0x101 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_line    0x0000000000000825       0xfb ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_line    0x0000000000000920       0xf0 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_line    0x0000000000000a10       0x4e ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_line    0x0000000000000a5e       0xf1 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_line    0x0000000000000b4f       0x4e ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_line    0x0000000000000b9d       0x50 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_line    0x0000000000000bed      0x15c c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
 
-.debug_frame    0x0000000000000000      0x200
+.debug_frame    0x0000000000000000      0x2b0
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0x2c obj/default/hello_world_small.o
- .debug_frame   0x000000000000002c       0x2c ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
- .debug_frame   0x0000000000000058       0x30 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
- .debug_frame   0x0000000000000088       0x2c ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
- .debug_frame   0x00000000000000b4       0x30 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
- .debug_frame   0x00000000000000e4       0x3c ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_frame   0x0000000000000120       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_frame   0x0000000000000140       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_frame   0x0000000000000160       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_frame   0x0000000000000180       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_frame   0x00000000000001a0       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_frame   0x00000000000001c0       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_frame   0x00000000000001e0       0x20 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_frame   0x0000000000000000       0x38 obj/default/hello_world_small.o
+ .debug_frame   0x0000000000000038       0x20 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+ .debug_frame   0x0000000000000058       0x2c ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
+ .debug_frame   0x0000000000000084       0x30 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_frame   0x00000000000000b4       0x2c ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_frame   0x00000000000000e0       0x54 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_frame   0x0000000000000134       0x30 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_frame   0x0000000000000164       0x30 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_frame   0x0000000000000194       0x3c ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_frame   0x00000000000001d0       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_frame   0x00000000000001f0       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_frame   0x0000000000000210       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_frame   0x0000000000000230       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_frame   0x0000000000000250       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_frame   0x0000000000000270       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_frame   0x0000000000000290       0x20 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
 
-.debug_str      0x0000000000000000      0x79c
+.debug_str      0x0000000000000000      0x86c
  *(.debug_str)
- .debug_str     0x0000000000000000       0xb2 obj/default/hello_world_small.o
-                                         0xbc (size before relaxing)
- .debug_str     0x00000000000000b2      0x190 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
+ .debug_str     0x0000000000000000      0x14f obj/default/hello_world_small.o
+                                        0x18d (size before relaxing)
+ .debug_str     0x000000000000014f      0x13a c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+                                        0x1df (size before relaxing)
+ .debug_str     0x0000000000000289      0x124 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_getchar.o)
                                         0x234 (size before relaxing)
- .debug_str     0x0000000000000242      0x11b ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_str     0x00000000000003ad      0x113 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
                                         0x238 (size before relaxing)
- .debug_str     0x000000000000035d       0x5e ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_str     0x00000000000004c0       0x5e ../JtagUartSmall_bsp/\libhal_bsp.a(alt_main.o)
                                         0x1b1 (size before relaxing)
- .debug_str     0x00000000000003bb       0x3a ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_str     0x000000000000051e       0x59 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+                                        0x102 (size before relaxing)
+ .debug_str     0x0000000000000577       0x34 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
+                                        0x189 (size before relaxing)
+ .debug_str     0x00000000000005ab       0x1c ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
                                         0x18e (size before relaxing)
- .debug_str     0x00000000000003f5       0x86 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_str     0x00000000000005c7       0x86 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
                                         0x222 (size before relaxing)
- .debug_str     0x000000000000047b       0x3d ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_str     0x000000000000064d       0x38 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
                                         0x21b (size before relaxing)
- .debug_str     0x00000000000004b8       0x2c ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_str     0x0000000000000685       0x2c ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
                                         0x211 (size before relaxing)
- .debug_str     0x00000000000004e4       0x1f ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_str     0x00000000000006b1       0x1f ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
                                         0x151 (size before relaxing)
- .debug_str     0x0000000000000503      0x120 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_str     0x00000000000006d0      0x120 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_dev.o)
                                         0x301 (size before relaxing)
- .debug_str     0x0000000000000623       0x1f ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_str     0x00000000000007f0       0x1f ../JtagUartSmall_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
                                         0x151 (size before relaxing)
- .debug_str     0x0000000000000642       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_str     0x000000000000080f       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
                                         0x158 (size before relaxing)
- .debug_str     0x0000000000000662      0x13a c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_str     0x000000000000082f       0x3d c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
                                         0x1e5 (size before relaxing)
 
-.debug_loc      0x0000000000000000      0x202
+.debug_loc      0x0000000000000000      0x550
  *(.debug_loc)
- .debug_loc     0x0000000000000000       0x34 obj/default/hello_world_small.o
- .debug_loc     0x0000000000000034       0x37 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
- .debug_loc     0x000000000000006b       0x21 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_loc     0x000000000000008c       0xcd ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_loc     0x0000000000000159       0x8b ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_loc     0x00000000000001e4       0x1e c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_loc     0x0000000000000000       0xd3 obj/default/hello_world_small.o
+ .debug_loc     0x00000000000000d3       0xa5 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+ .debug_loc     0x0000000000000178      0x1de ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_loc     0x0000000000000356       0x2c ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_loc     0x0000000000000382       0x37 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_loc     0x00000000000003b9       0x21 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_loc     0x00000000000003da       0xcd ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_loc     0x00000000000004a7       0x8b ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_loc     0x0000000000000532       0x1e c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -500,9 +553,11 @@ LOAD c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
                 [!provide]                        PROVIDE (__alt_heap_limit, 0x10000)
 OUTPUT(JtagUartSmall.elf elf32-littlenios2)
 
-.debug_ranges   0x0000000000000000       0xa8
+.debug_ranges   0x0000000000000000      0x118
  .debug_ranges  0x0000000000000000       0x20 ../JtagUartSmall_bsp//obj/HAL/src/crt0.o
- .debug_ranges  0x0000000000000020       0x10 obj/default/hello_world_small.o
- .debug_ranges  0x0000000000000030       0x48 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
- .debug_ranges  0x0000000000000078       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_ranges  0x0000000000000098       0x10 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_ranges  0x0000000000000020       0x58 obj/default/hello_world_small.o
+ .debug_ranges  0x0000000000000078       0x10 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+ .debug_ranges  0x0000000000000088       0x48 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_ranges  0x00000000000000d0       0x18 ../JtagUartSmall_bsp/\libhal_bsp.a(alt_printf.o)
+ .debug_ranges  0x00000000000000e8       0x20 ../JtagUartSmall_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_ranges  0x0000000000000108       0x10 c:/intelfpga/17.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)

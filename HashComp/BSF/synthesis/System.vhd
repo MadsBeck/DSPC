@@ -13,6 +13,20 @@ entity System is
 end entity System;
 
 architecture rtl of System is
+	component mmSha is
+		port (
+			mm_clock      : in  std_logic                     := 'X';             -- clk
+			mm_reset      : in  std_logic                     := 'X';             -- reset
+			mm_write      : in  std_logic                     := 'X';             -- write
+			mm_read       : in  std_logic                     := 'X';             -- read
+			mm_byteenable : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			mm_writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			mm_readdata   : out std_logic_vector(31 downto 0);                    -- readdata
+			mm_adress     : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- address
+			mm_cs         : in  std_logic                     := 'X'              -- chipselect
+		);
+	end component mmSha;
+
 	component System_jtag_uart_0 is
 		port (
 			clk            : in  std_logic                     := 'X';             -- clk
@@ -112,7 +126,14 @@ architecture rtl of System is
 			onchip_memory2_0_s1_writedata                  : out std_logic_vector(31 downto 0);                    -- writedata
 			onchip_memory2_0_s1_byteenable                 : out std_logic_vector(3 downto 0);                     -- byteenable
 			onchip_memory2_0_s1_chipselect                 : out std_logic;                                        -- chipselect
-			onchip_memory2_0_s1_clken                      : out std_logic                                         -- clken
+			onchip_memory2_0_s1_clken                      : out std_logic;                                        -- clken
+			Sha256_mm_0_mm_address                         : out std_logic_vector(3 downto 0);                     -- address
+			Sha256_mm_0_mm_write                           : out std_logic;                                        -- write
+			Sha256_mm_0_mm_read                            : out std_logic;                                        -- read
+			Sha256_mm_0_mm_readdata                        : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			Sha256_mm_0_mm_writedata                       : out std_logic_vector(31 downto 0);                    -- writedata
+			Sha256_mm_0_mm_byteenable                      : out std_logic_vector(3 downto 0);                     -- byteenable
+			Sha256_mm_0_mm_chipselect                      : out std_logic                                         -- chipselect
 		);
 	end component System_mm_interconnect_0;
 
@@ -219,6 +240,13 @@ architecture rtl of System is
 	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_byteenable       : std_logic_vector(3 downto 0);  -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_byteenable -> nios2_gen2_0:debug_mem_slave_byteenable
 	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_write            : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_write -> nios2_gen2_0:debug_mem_slave_write
 	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_writedata        : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_writedata -> nios2_gen2_0:debug_mem_slave_writedata
+	signal mm_interconnect_0_sha256_mm_0_mm_chipselect                     : std_logic;                     -- mm_interconnect_0:Sha256_mm_0_mm_chipselect -> Sha256_mm_0:mm_cs
+	signal mm_interconnect_0_sha256_mm_0_mm_readdata                       : std_logic_vector(31 downto 0); -- Sha256_mm_0:mm_readdata -> mm_interconnect_0:Sha256_mm_0_mm_readdata
+	signal mm_interconnect_0_sha256_mm_0_mm_address                        : std_logic_vector(3 downto 0);  -- mm_interconnect_0:Sha256_mm_0_mm_address -> Sha256_mm_0:mm_adress
+	signal mm_interconnect_0_sha256_mm_0_mm_read                           : std_logic;                     -- mm_interconnect_0:Sha256_mm_0_mm_read -> Sha256_mm_0:mm_read
+	signal mm_interconnect_0_sha256_mm_0_mm_byteenable                     : std_logic_vector(3 downto 0);  -- mm_interconnect_0:Sha256_mm_0_mm_byteenable -> Sha256_mm_0:mm_byteenable
+	signal mm_interconnect_0_sha256_mm_0_mm_write                          : std_logic;                     -- mm_interconnect_0:Sha256_mm_0_mm_write -> Sha256_mm_0:mm_write
+	signal mm_interconnect_0_sha256_mm_0_mm_writedata                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:Sha256_mm_0_mm_writedata -> Sha256_mm_0:mm_writedata
 	signal mm_interconnect_0_onchip_memory2_0_s1_chipselect                : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect
 	signal mm_interconnect_0_onchip_memory2_0_s1_readdata                  : std_logic_vector(31 downto 0); -- onchip_memory2_0:readdata -> mm_interconnect_0:onchip_memory2_0_s1_readdata
 	signal mm_interconnect_0_onchip_memory2_0_s1_address                   : std_logic_vector(12 downto 0); -- mm_interconnect_0:onchip_memory2_0_s1_address -> onchip_memory2_0:address
@@ -228,13 +256,26 @@ architecture rtl of System is
 	signal mm_interconnect_0_onchip_memory2_0_s1_clken                     : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
 	signal irq_mapper_receiver0_irq                                        : std_logic;                     -- jtag_uart_0:av_irq -> irq_mapper:receiver0_irq
 	signal nios2_gen2_0_irq_irq                                            : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> nios2_gen2_0:irq
-	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, rst_controller_reset_out_reset:in, rst_translator:in_reset]
+	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [Sha256_mm_0:mm_reset, irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, rst_controller_reset_out_reset:in, rst_translator:in_reset]
 	signal rst_controller_reset_out_reset_req                              : std_logic;                     -- rst_controller:reset_req -> [nios2_gen2_0:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv  : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:inv -> jtag_uart_0:av_read_n
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:inv -> jtag_uart_0:av_write_n
 	signal rst_controller_reset_out_reset_ports_inv                        : std_logic;                     -- rst_controller_reset_out_reset:inv -> [jtag_uart_0:rst_n, nios2_gen2_0:reset_n]
 
 begin
+
+	sha256_mm_0 : component mmSha
+		port map (
+			mm_clock      => clk_clk,                                     -- clock.clk
+			mm_reset      => rst_controller_reset_out_reset,              -- reset.reset
+			mm_write      => mm_interconnect_0_sha256_mm_0_mm_write,      --    mm.write
+			mm_read       => mm_interconnect_0_sha256_mm_0_mm_read,       --      .read
+			mm_byteenable => mm_interconnect_0_sha256_mm_0_mm_byteenable, --      .byteenable
+			mm_writedata  => mm_interconnect_0_sha256_mm_0_mm_writedata,  --      .writedata
+			mm_readdata   => mm_interconnect_0_sha256_mm_0_mm_readdata,   --      .readdata
+			mm_adress     => mm_interconnect_0_sha256_mm_0_mm_address,    --      .address
+			mm_cs         => mm_interconnect_0_sha256_mm_0_mm_chipselect  --      .chipselect
+		);
 
 	jtag_uart_0 : component System_jtag_uart_0
 		port map (
@@ -332,7 +373,14 @@ begin
 			onchip_memory2_0_s1_writedata                  => mm_interconnect_0_onchip_memory2_0_s1_writedata,             --                                         .writedata
 			onchip_memory2_0_s1_byteenable                 => mm_interconnect_0_onchip_memory2_0_s1_byteenable,            --                                         .byteenable
 			onchip_memory2_0_s1_chipselect                 => mm_interconnect_0_onchip_memory2_0_s1_chipselect,            --                                         .chipselect
-			onchip_memory2_0_s1_clken                      => mm_interconnect_0_onchip_memory2_0_s1_clken                  --                                         .clken
+			onchip_memory2_0_s1_clken                      => mm_interconnect_0_onchip_memory2_0_s1_clken,                 --                                         .clken
+			Sha256_mm_0_mm_address                         => mm_interconnect_0_sha256_mm_0_mm_address,                    --                           Sha256_mm_0_mm.address
+			Sha256_mm_0_mm_write                           => mm_interconnect_0_sha256_mm_0_mm_write,                      --                                         .write
+			Sha256_mm_0_mm_read                            => mm_interconnect_0_sha256_mm_0_mm_read,                       --                                         .read
+			Sha256_mm_0_mm_readdata                        => mm_interconnect_0_sha256_mm_0_mm_readdata,                   --                                         .readdata
+			Sha256_mm_0_mm_writedata                       => mm_interconnect_0_sha256_mm_0_mm_writedata,                  --                                         .writedata
+			Sha256_mm_0_mm_byteenable                      => mm_interconnect_0_sha256_mm_0_mm_byteenable,                 --                                         .byteenable
+			Sha256_mm_0_mm_chipselect                      => mm_interconnect_0_sha256_mm_0_mm_chipselect                  --                                         .chipselect
 		);
 
 	irq_mapper : component System_irq_mapper

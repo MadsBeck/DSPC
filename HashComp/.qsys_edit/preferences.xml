@@ -7,7 +7,8 @@
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
- <window width="1936" height="1056" x="-8" y="-8" />
+ <library expandedCategories="Project/DSPCGroup1,Project,Library" />
+ <window width="1918" height="1047" x="-8" y="-8" />
  <generation synthesis="VHDL" path="BSF" />
+ <hdlexample language="VERILOG" />
 </preferences>
